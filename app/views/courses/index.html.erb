@@ -1,0 +1,46 @@
+<br/> 
+
+<div class="d-flex flex-row bd-highlight mb-3">
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+  <div class="p-2 bd-highlight box">Flex item 1</div>
+  <div class="p-2 bd-highlight box">Flex item 2</div>
+  <div class="p-2 bd-highlight box">Flex item 3</div>
+</div>
+
+
+
+
+
+
+
+  <% @courses.each do |course| %>
+    <div class = "box d-flex flex-row bd-highlight mb-3">
+      <div class="d-inline-flex p-2 bd-highlight">
+        <%= course.title %>
+        <%= course.description %>
+        <%= course.category %>
+        <%= course.user.email %>
+      </div>
+    </div>
+  <% end %>
+
