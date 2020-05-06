@@ -16,10 +16,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+        <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+          
+
+          <ul class="navbar-nav"> 
             <li class="nav-item">
-              <a class="nav-link" href="#">Explore</a>
+              <%= link_to 'Explore', courses_path, class: 'nav-link font-weight-bold' %>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
@@ -32,12 +34,15 @@
               <li class="nav-item">
                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link font-weight-bold' %>
               </li>
+
               <li class="nav-item">
                <%= link_to 'My Dashboard', dashboard_path , class: 'nav-link font-weight-bold' %>
               </li>
+
+
             <% else %>
               <li class="nav-item">
-                <%= link_to 'Login', new_user_session_path, class: 'nav-link font-weight-bold' %>
+                <%= link_to 'Login', new_user_session_path, class: 'nav-link font-weight-bold ' %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link font-weight-bold' %>
@@ -47,7 +52,9 @@
 
           </ul>
         </div>
-        <%= link_to 'sPET.', root_path, class: 'navbar-brand' %>
+          <%= link_to 'sPET.', root_path, class: 'navbar-brand' %>
+
+        
 
       </nav>
 

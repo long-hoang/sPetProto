@@ -1,46 +1,45 @@
 <br/> 
 
-<div class="d-flex flex-row bd-highlight mb-3">
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-  <div class="p-2 bd-highlight box">Flex item 1</div>
-  <div class="p-2 bd-highlight box">Flex item 2</div>
-  <div class="p-2 bd-highlight box">Flex item 3</div>
-</div>
+<!--   <% @courses.each do |course| %>
 
 
-
-
-
-
-
-  <% @courses.each do |course| %>
-    <div class = "box d-flex flex-row bd-highlight mb-3">
-      <div class="d-inline-flex p-2 bd-highlight">
         <%= course.title %>
         <%= course.description %>
         <%= course.category %>
         <%= course.user.email %>
-      </div>
-    </div>
-  <% end %>
+  <% end %> -->    
 
+    <% @courses.each do |course| %>   
+      <div class = "offset-md-3" style = "width: 70%;">   
+          <div class = "card-body">
+            <span class="badge badge-pill badge-danger"><%= course.category %></span>
+            <h5 style="font-size:50px;"><%= course.title %></h5>
+            
+              <p class=" card-box text-muted font-italic" style="max-width: 75%; min-height: 100px;">
+                <b style="font-size:20px;">"</b>
+                 <%= course.description %>
+                <b style="font-size:20px;">"</b>
+              </p>
+            
+              <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= course.user.email %></span> on <%= course.created_at.strftime("%B %d, %Y") %></span>
+              <a href="#" class="card-link">...</a>  
+
+          </div>
+          <hr style="width:75%;text-align:left;margin-left:0">
+      </div>
+
+
+    <% end %>
+
+
+
+
+<!--       <div class="offset-md-2" style="width: 70%;">
+        <div class="card-body">
+          <h5 class="card-title">COURSE TITLE</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Author</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div> -->

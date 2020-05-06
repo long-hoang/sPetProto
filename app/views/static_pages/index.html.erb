@@ -1,6 +1,5 @@
-<br/>
-<br/>
-<br/>
+
+
 <br/>
 
 <div class = "container">
@@ -10,8 +9,8 @@
       <h5> Elevate the classroom experience and find its greatest potential</h5>
       <br/>
         <% if user_signed_in? %>
-          <%= link_to '+ Create New Course', new_instructor_course_path, class: 'round btn btn-success btn-lg btn-block' %> <!-- Will restrict to students only -->
-          <button type="button" class="round btn btn-info btn-lg btn-block">EXPLORE Lesson Plans</button>
+          <%= link_to '+ Create New Course', new_instructor_course_path, class: 'round btn btn-success btn-lg btn-block' %> 
+          <%= link_to 'EXPLORE Lesson Plans', courses_path, class: "round btn btn-info btn-lg btn-block" %>
           <button type="button" class="round btn btn-warning btn-lg btn-block">Learn More About StudentsPET</button>
         <% else %>
           <%= link_to 'Login', new_user_session_path, class: 'round btn btn-primary' %>
@@ -25,7 +24,8 @@
     </div>
     <div class = "col">
       <%= image_tag  'spetlanding.JPG', class: 'img-fluid', style: 'width:70%' %> 
-    </div>
+
+     </div>
   </div>
 </div>
 
