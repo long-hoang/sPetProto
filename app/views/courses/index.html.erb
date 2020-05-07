@@ -1,19 +1,13 @@
 <br/> 
 
-<!--   <% @courses.each do |course| %>
 
+    <% @courses.each do |course| %>  
 
-        <%= course.title %>
-        <%= course.description %>
-        <%= course.category %>
-        <%= course.user.email %>
-  <% end %> -->    
-
-    <% @courses.each do |course| %>   
       <div class = "offset-md-3" style = "width: 70%;">   
           <div class = "card-body">
             <span class="badge badge-pill badge-danger"><%= course.category %></span>
-            <h5 style="font-size:50px;"><%= course.title %></h5>
+            <br/>
+            <%= link_to course.title , course_path(course), class: 'card-course-title' %>
             
               <p class=" card-box text-muted font-italic" style="max-width: 75%; min-height: 100px;">
                 <b style="font-size:20px;">"</b>
@@ -29,17 +23,9 @@
       </div>
 
 
+
+
+
     <% end %>
 
 
-
-
-<!--       <div class="offset-md-2" style="width: 70%;">
-        <div class="card-body">
-          <h5 class="card-title">COURSE TITLE</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Author</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div> -->

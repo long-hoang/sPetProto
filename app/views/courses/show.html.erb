@@ -1,0 +1,47 @@
+<br/>
+
+
+
+
+<div class = "box col-8 offset-2">
+
+  <% if current_user && current_user == @course.user %>
+    <div style = 'text-align: right;'>
+      
+      <%= link_to 'Change to Instructor View', instructor_course_path(@course), class: 'btn btn-outline-primary' %>
+
+    </div>
+  <% end %>
+
+  <h1> <%= @course.title %>  </h1>
+  <p> <%= @course.description %> </p>
+  <div class="badge badge-pill badge-danger"><%= @course.category %></div>
+  <div>
+    <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= @course.user.email %></span> on <%= @course.created_at.strftime("%B %d, %Y") %></span>
+  <div>
+  
+  <br/>
+  <br/>
+
+  <div class="accordion" id="accordionExample">
+    
+    <% for i in 0..9 do %>
+      
+        <div class="card-header" id="heading<%= i %>">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#<%= i %>" aria-expanded="false" aria-controls="<%= i %>">
+              <%= i %>
+            </button>
+          </h2>
+        </div>
+
+        <div id="<%= i %>" class="collapse " aria-labelledby="heading<%= i %>" data-parent="#accordionExample">
+          <div class="card-body">
+              <h5> This is the body content </h5>
+              <%= i %>
+          </div>
+        </div>    
+    <% end %>
+
+  </div>
+</div>
