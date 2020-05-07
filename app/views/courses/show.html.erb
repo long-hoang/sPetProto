@@ -27,7 +27,7 @@
 
   <div class="accordion" id="accordionExample">
     
-    <% @course.sections.each do |section| %>
+    <% @course.sections.rank(:row_order).each do |section| %>
       
         <div class="card-header" id="heading<%= section.id %>">
           <h2 class="mb-0">

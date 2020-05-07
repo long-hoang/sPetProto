@@ -18,17 +18,17 @@
   <br/>
   <br/>
 
-  <% @course.sections.each do |section| %>
+  <% @course.sections.rank(:row_order).each do |section| %>
     
     <div class="card round" >
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted" style="font-size: 10px;">Last updated on <%= section.updated_at.strftime("%B %d, %Y") %> </h6>
         <h5 class="card-title"><%= section.title %></h5>
         <hr/>
-        <p class="card-text"><%= section.content %></p>
-        <a href="#" class="card-link">Shift Up/Down</a>
+        
+        <a href="#" class="card-link">delete</a>
         <a href="#" class="card-link">Edit</a>
-        <div style="text-align: right;"> <a href="#" class="card-link">delete</a></div>
+        
       </div>
     </div>  
 
