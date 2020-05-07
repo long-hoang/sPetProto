@@ -14,12 +14,12 @@
   <% end %>
   
   <br/>
-  
+
   <h1> <%= @course.title %>  </h1>
   <p> <%= @course.description %> </p>
   <div class="badge badge-pill badge-danger"><%= @course.category %></div>
   <div>
-    <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= @course.user.email %></span> on <%= @course.created_at.strftime("%B %d, %Y") %></span>
+    <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= @course.user.email %></span>, created on <%= @course.created_at.strftime("%B %d, %Y") %></span>
   <div>
   
   <br/>
@@ -27,20 +27,20 @@
 
   <div class="accordion" id="accordionExample">
     
-    <% for i in 0..9 do %>
+    <% @course.sections.each do |section| %>
       
-        <div class="card-header" id="heading<%= i %>">
+        <div class="card-header" id="heading<%= section.id %>">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#<%= i %>" aria-expanded="false" aria-controls="<%= i %>">
-              <%= i %>
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#<%= section.id %>" aria-expanded="false" aria-controls="<%= section.id %>">
+            <%= section.title %>           
             </button>
           </h2>
         </div>
 
-        <div id="<%= i %>" class="collapse " aria-labelledby="heading<%= i %>" data-parent="#accordionExample">
+        <div id="<%= section.id %>" class="collapse " aria-labelledby="heading<%= section.id %>" data-parent="#accordionExample">
           <div class="card-body">
-              <h5> This is the body content </h5>
-              <%= i %>
+              <h5> <%= section.content %></h5>
+              
           </div>
         </div>    
     <% end %>

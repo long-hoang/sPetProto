@@ -1,10 +1,37 @@
 <br/>
 <div class = "col-8 offset-2" >
   <div style ="text-align: right;">    
-    <%= link_to '+ Add a Section', new_instructor_course_section_path(@course), class: "btn btn-success round" %>
     <%= link_to 'Switch to Student View', course_path(@course), class: "btn btn-info round" %>
   </div>
   <br/>
-  <h1 ><%= @course.title %></h1>
+  <h1> <%= @course.title %>  </h1>
+  <p> <%= @course.description %> </p>
+  <div class="badge badge-pill badge-danger"><%= @course.category %></div>
+  <div>
+    <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= @course.user.email %></span> on <%= @course.created_at.strftime("%B %d, %Y") %></span>
+  <div>
+
+  <div style ="text-align: right;">  
+    <%= link_to '+ Add a Section', new_instructor_course_section_path(@course), class: "btn btn-success round" %>
+  </div>
+
+  <br/>
+  <br/>
+
+  <% @course.sections.each do |section| %>
+    
+    <div class="card round" >
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted" style="font-size: 10px;">Last updated on <%= section.updated_at.strftime("%B %d, %Y") %> </h6>
+        <h5 class="card-title"><%= section.title %></h5>
+        <hr/>
+        <p class="card-text"><%= section.content %></p>
+        <a href="#" class="card-link">Shift Up/Down</a>
+        <a href="#" class="card-link">Edit</a>
+        <div style="text-align: right;"> <a href="#" class="card-link">delete</a></div>
+      </div>
+    </div>  
+
+  <% end %>
 
 </div>
