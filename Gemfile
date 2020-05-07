@@ -33,6 +33,8 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'jquery-ui-rails'
+
 gem 'ranked-model'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

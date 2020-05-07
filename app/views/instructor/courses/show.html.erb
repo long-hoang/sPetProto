@@ -1,3 +1,24 @@
+<script>
+  $(function() {
+    $('.sections-item').sortable({
+      update: function(event,ui) {
+       $.ajax({
+          type: 'PUT',
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { section: {row_order_position: ui.item.index() }}
+       });
+      }
+    });
+  });
+</script>
+
+
+
+
+
+
+
 <br/>
 <div class = "col-8 offset-2" >
   <div style ="text-align: right;">    
@@ -18,20 +39,28 @@
   <br/>
   <br/>
 
+  <div class = "sections-item">
+
   <% @course.sections.rank(:row_order).each do |section| %>
-    
-    <div class="card round" >
-      <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted" style="font-size: 10px;">Last updated on <%= section.updated_at.strftime("%B %d, %Y") %> </h6>
-        <h5 class="card-title"><%= section.title %></h5>
-        <hr/>
-        
-        <a href="#" class="card-link">delete</a>
-        <a href="#" class="card-link">Edit</a>
-        
-      </div>
-    </div>  
+
+
+
+      <div class="card round" data-update-url="<%= instructor_section_path(section) %>" >
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted" style="font-size: 10px;">Last updated on <%= section.updated_at.strftime("%B %d, %Y") %> </h6>
+          <h5 class="card-title"><%= section.title %></h5>
+          <hr/>
+          
+          <a href="#" class="card-link">delete</a>
+          <a href="#" class="card-link">Edit</a>
+          
+        </div>
+      </div>  
+
+
 
   <% end %>
+
+  </div>
 
 </div>
