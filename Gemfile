@@ -36,6 +36,12 @@ gem 'devise'
 gem 'jquery-ui-rails'
 
 gem 'ranked-model'
+
+gem 'ckeditor', github: 'galetahub/ckeditor'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

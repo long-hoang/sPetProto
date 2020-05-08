@@ -39,7 +39,7 @@
 
         <div id="<%= section.id %>" class="collapse " aria-labelledby="heading<%= section.id %>" data-parent="#accordionExample">
           <div class="card-body">
-              <h5> <%= section.content %></h5>
+              <%= section.content.html_safe %>
               
           </div>
         </div>    
