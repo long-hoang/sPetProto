@@ -21,8 +21,21 @@
 
 <br/>
 <div class = "col-8 offset-2" >
+  
   <div style ="text-align: right;">    
+    
+    <div class="btn-group">
+      <button type="button" class="btn btn-warning dropdown-toggle round" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Course Options
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Edit Course Details</a>
+        <a class="dropdown-item" href="#">Delete Course</a>
+      </div>
+    </div>
+
     <%= link_to 'Switch to Student View', course_path(@course), class: "btn btn-info round" %>
+
   </div>
   <br/>
   <h1> <%= @course.title %>  </h1>
@@ -34,6 +47,7 @@
 
   <div style ="text-align: right;">  
     <%= link_to '+ Add a Section', new_instructor_course_section_path(@course), class: "btn btn-success round" %>
+
   </div>
 
   <br/>
@@ -49,7 +63,7 @@
         <div class="card-body" >
 
           <button type="button" class="btn btn-outline-danger btn-sm round">Delete</button>
-          <button type="button" class="btn btn-outline-primary btn-sm round">Edit</button>
+          <button type="button" class="btn btn-outline-primary btn-sm round">Edit Section</button>
           
           <hr/>
 
@@ -58,9 +72,9 @@
           
 
             <div class="accordion" id="accordionExample">             
-                  <div  id="heading<%= section.id %>">
+                  <div  id="heading<%= section.id %>" style = "text-align: center">
                     <h2 class="mb-0">
-                      <button class="btn btn-warning btn-sm round collapsed" type="button" data-toggle="collapse" data-target="#<%= section.id %>" aria-expanded="false" aria-controls="<%= section.id %>">
+                      <button class="btn btn-dark btn-sm round collapsed" type="button" data-toggle="collapse" data-target="#<%= section.id %>" aria-expanded="false" aria-controls="<%= section.id %>">
                       Show Section Contents          
                       </button>
                     </h2>
