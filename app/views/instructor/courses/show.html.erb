@@ -37,7 +37,7 @@
   </div>
 
   <br/>
-  <br/>
+  <h6 style = "text-align: center; color:grey; font-style: italic;">Click and drag to edit section order</h6>
 
   <div class = "sections-item">
 
@@ -45,14 +45,36 @@
 
 
 
-      <div class="card round" data-update-url="<%= instructor_section_path(section) %>" >
-        <div class="card-body">
+      <div class="card round" data-update-url="<%= instructor_section_path(section) %>" style="background-color: #fff8db" >
+        <div class="card-body" >
+
+          <button type="button" class="btn btn-outline-danger btn-sm round">Delete</button>
+          <button type="button" class="btn btn-outline-primary btn-sm round">Edit</button>
+          
+          <hr/>
+
           <h6 class="card-subtitle mb-2 text-muted" style="font-size: 10px;">Last updated on <%= section.updated_at.strftime("%B %d, %Y") %> </h6>
           <h5 class="card-title"><%= section.title %></h5>
-          <hr/>
           
-          <a href="#" class="card-link">delete</a>
-          <a href="#" class="card-link">Edit</a>
+
+            <div class="accordion" id="accordionExample">             
+                  <div  id="heading<%= section.id %>">
+                    <h2 class="mb-0">
+                      <button class="btn btn-warning btn-sm round collapsed" type="button" data-toggle="collapse" data-target="#<%= section.id %>" aria-expanded="false" aria-controls="<%= section.id %>">
+                      Show Section Contents          
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="<%= section.id %>" class="collapse " aria-labelledby="heading<%= section.id %>" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <%= section.content.html_safe %>
+                        
+                    </div>
+                  </div>    
+            </div>          
+                    
+
           
         </div>
       </div>  
@@ -64,3 +86,6 @@
   </div>
 
 </div>
+
+<br/>
+<br/>
