@@ -4,7 +4,9 @@ class PlansController < ApplicationController
   def create
     @course = Course.find(params[:course_id])
     @course.plans.create(plan_params.merge(user: current_user))
+    flash[:notice] = 'Successfully added!'
     redirect_to course_path(@course)
+
 
   end
 

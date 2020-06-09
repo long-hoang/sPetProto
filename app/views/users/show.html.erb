@@ -3,19 +3,64 @@
   <h3> <%= @user.email %> 's Dashboard</h3>
 </div>
 
-<div class ='box col-10 offset-1'>
-  <h3> Planner </h3>
-  <% @user.plans.each do |plan| %>
-    <%= plan.inspect %>
-  <% end %>
+
+<div class = 'box col-10 offset-1'>
+  <div class = 'row'>
+
+
+      <div class = 'box col-4'>
+          <h4> My Courses </h4>
+
+          <% @user.courses.each do |course| %>
+            <%= link_to course.title , course_path(course) %>
+            <br/>
+          <% end %>
+      </div>
+
+
+      <div class ='box col-8' style = "padding: 0px;">
+        <% @user.plans.each do |plan| %>
+
+        <div class = "row" >
+
+          <div class = 'col-2 plan-timestamp' >
+            
+            <%= plan.time.strftime "%I:%M %p" %>
+            <br/>
+            <%= plan.date.to_formatted_s(:short) %>
+            <br/>
+            <%= plan.date.year %>
+
+          </div>
+
+          <div class = 'col-6 plan-box'>
+            <%= plan.course.title %>
+          </div>    
+
+          <div class = 'col-2 plan-box' style = "text-align: center;">
+            <span class="badge badge-pill badge-warning" style = "color: black;"><%= plan.course.category %></span>
+          </div>
+
+          <div class = 'col-1 plan-box' style = "text-align: center;">
+            <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+            </svg>
+          </div>
+
+        </div>
+
+
+
+          <br/>
+        <% end %>
+      </div>
+
+  </div>
 </div>
 
 
-<div class = 'box col-10 offset-1'>
-  <h4> My Courses </h4>
 
-  <% @user.courses.each do |course| %>
-    <%= link_to course.title , course_path(course) %>
-    <br/>
-  <% end %>
+
+<div class = 'box col-10 offset-1'>
+
 </div>
