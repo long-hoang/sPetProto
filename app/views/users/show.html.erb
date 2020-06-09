@@ -3,7 +3,12 @@
   <h3> <%= @user.email %> 's Dashboard</h3>
 </div>
 
-
+<div class ='box col-10 offset-1'>
+  <h3> Planner </h3>
+  <% @user.plans.each do |plan| %>
+    <%= plan.inspect %>
+  <% end %>
+</div>
 
 
 <div class = 'box col-10 offset-1'>

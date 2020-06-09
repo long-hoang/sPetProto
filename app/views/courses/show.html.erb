@@ -8,11 +8,22 @@
   <% if current_user && current_user == @course.user %>
     <div style = 'text-align: right;'>
       
-      <%= link_to 'Switch to Instructor View', instructor_course_path(@course), class: 'btn btn-outline-primary round' %>
+      <%= link_to 'Switch to Instructor View', instructor_course_path(@course), class: 'btn btn-outline-primary round'%>
 
     </div>
   <% end %>
   
+
+<%= simple_form_for @plan, url: course_plans_path(@course) do |f| %>
+  <%= f.input :date %>
+  <%= f.input :time %>
+
+  <%= f.submit "Add to Planner", class: 'btn btn-primary' %>
+<% end %>
+
+
+
+
   <br/>
 
   <h1> <%= @course.title %>  </h1>
