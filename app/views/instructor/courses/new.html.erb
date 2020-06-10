@@ -1,7 +1,7 @@
 <br/>
 <div class = "box col-10 offset-1">
   <h1>Add new course</h1>
-  <%= simple_form_for @course do |f| %>
+  <%= simple_form_for @course , url: instructor_courses_path, html: {method: 'post'} do |f| %>
     <%= f.input :title, input_html: { maxlength: 75 }%>
     <%= f.input :description, input_html: { maxlength: 200 }, hint: 'Note: 200 Max Length' %>
     <%= f.input :category, collection: Course::CATEGORIES %>
