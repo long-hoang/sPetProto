@@ -29,7 +29,7 @@
         Course Options
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Edit Course Details</a>
+        <%= link_to 'Edit', edit_instructor_course_path(@course) ,class: "dropdown-item"%>
         <a class="dropdown-item" href="#">Delete Course</a>
       </div>
     </div>
