@@ -11,8 +11,9 @@ class Instructor::CoursesController < ApplicationController
     if @course.valid?
       redirect_to instructor_course_path(@course)
     else
-      redirect_to new_instructor_course_path
-      render :new, status: :unprocessable_entity
+      redirect_to new_instructor_course_path, alert: "Invalid Input!"
+      
+      
     end
   end
 
