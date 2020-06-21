@@ -1,9 +1,27 @@
 <br/>
 <div class = "col-8 offset-2" >
-  <p> <%= link_to "Explore", courses_path %> / <%= link_to @section.course.title, course_path(@section.course.id) %> / <%= @section.title %><p>
-  <hr/>
-  <h1> <%= @section.title %></h1>
+  <div class = "row">
+    <div class = "col">
+      <%= link_to "Explore", courses_path %> / <%= link_to @section.course.title, course_path(@section.course.id) %> / <%= @section.title %>
+    </div>
 
+
+    <% if current_user && current_user == @section.course.user %>
+      <div class = "col" style = "text-align: right;">
+       <%= link_to 'Editor Mode', instructor_course_path(@section.course), class: 'btn btn-warning btn-sm round'%>      
+      </div>
+    <% end %>
+  </div>
+
+  <hr/>
+
+
+  
+  <h1> <%= @section.title %></h1>
+    <div>
+      <span class = "text-muted" style = "font-size: 10px;"> Created: <%= @section.created_at.strftime("%B %d, %Y") %>, Updated: <%= @section.updated_at.strftime("%B %d, %Y") %></span>
+    <div>
+  <p> <%= @section.content.html_safe %> </p>
 
 </div>
 

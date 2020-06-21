@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :courses, only: [:index, :show] do
     resources :plans, only: :create
-    resources :sections, only: [:show, :destroy]
+    resources :sections, only: [:show, :destroy, :edit, :update]
   end
 
   resources :users, only: :show do

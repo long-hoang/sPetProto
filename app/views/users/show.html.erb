@@ -9,6 +9,8 @@
 
 
       <div class = 'box col-4'>
+          <%= link_to '+ Create New Course', new_instructor_course_path, class: 'round btn btn-success btn-sm btn-block' %> 
+                    
           <h4> My Courses </h4>
 
           <% @user.courses.each do |course| %>
@@ -19,33 +21,50 @@
 
 
       <div class ='box col-8' style = "padding: 0px;">
+        <%= link_to '+ Explore Courses', courses_path, class: "round btn btn-info btn-sm " %>
         <% @user.plans.each do |plan| %>
 
         <div class = "row" >
 
-          <div class = 'col-2 plan-timestamp' >
-            
-            <%= plan.time.strftime "%I:%M %p" %>
-            <br/>
-            <%= plan.date.to_formatted_s(:short) %>
-            <br/>
-            <%= plan.date.year %>
 
-          </div>
 
-          <div class = 'col-6 plan-box'>
-            <%= link_to  plan.course.title , course_path(plan.course)%>
-          </div>    
 
-          <div class = 'col-2 plan-box' style = "text-align: center;">
-            <span class="badge badge-pill badge-warning" style = "color: black;"><%= plan.course.category %></span>
-          </div>
+              <div class = 'col-2 plan-timestamp' >
+                
+                <%= plan.time.strftime "%I:%M %p" %>
+                <br/>
+                <%= plan.date.to_formatted_s(:short) %>
+                <br/>
+                <%= plan.date.year %>
 
-          <div class = 'col-1 plan-box' style = "text-align: center;">
-            <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-            </svg>
-          </div>
+              </div>
+
+
+
+
+              <div class = 'col-6 plan-box'>
+                
+                <% if plan.course.present? %>
+                  <%= link_to  plan.course.title , course_path(plan.course)%>
+                <% else %>
+                  <span style = "color:grey;">Course no longer Exists...</span>
+                <% end %>
+
+              </div>    
+
+              <div class = 'col-2 plan-box' style = "text-align: center;">
+                <% if plan.course.present? %>
+                  <span class="badge badge-pill badge-warning" style = "color: black;"><%= plan.course.category %></span>
+                <% else %>
+                  N/A
+                <% end %>
+              </div>
+
+              <div class = 'col-1 plan-box' style = "text-align: center;">
+                <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                </svg>
+              </div>          
 
         </div>
 

@@ -5,26 +5,33 @@
 
 <div class = "col-8 offset-2">
 
-  <p> <%= link_to "Explore", courses_path %> /  <%= @course.title %><p>
-  <hr/>
 
-  <% if current_user && current_user == @course.user %>
-    <div style = 'text-align: right;'>
-      
-      <%= link_to 'Instructor Options', instructor_course_path(@course), class: 'btn btn-outline-primary round'%>
+  <div class = "row">
+    <div class = "col">
+      <%= link_to "Explore", courses_path %> /  <%= @course.title %>
+    </div>
+
+    <div class = "col" style = "text-align: right;">
+      <% if current_user && current_user == @course.user %>
+
+          
+          <%= link_to 'Editor Mode', instructor_course_path(@course), class: 'btn btn-warning btn-sm round'%>
+
+
+      <% end %>
+        <!-- Button trigger modal -->
+
+          <button type="button" class="btn btn-success btn-sm round" data-toggle="modal" data-target="#exampleModal">
+            + Add to Planner
+          </button>
+
 
     </div>
-  <% end %>
+  </div>
+
+  <hr/>
+
   
-
-
-  <br/>
-  <!-- Button trigger modal -->
-<div style= "text-align: right;">
-    <button type="button" class="btn btn-success btn-sm round" data-toggle="modal" data-target="#exampleModal">
-      Add to Planner
-    </button>
-</div>
 
 
 
@@ -63,7 +70,7 @@
   <p> <%= @course.description %> </p>
   <div class="badge badge-pill badge-danger"><%= @course.category %></div>
   <div>
-    <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= @course.user.email %></span>, created on <%= @course.created_at.strftime("%B %d, %Y") %></span>
+    <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= @course.user.email %></span>, Created: <%= @course.created_at.strftime("%B %d, %Y") %>, Updated: <%= @course.updated_at.strftime("%B %d, %Y") %></span>
   <div>
 
   <br/>

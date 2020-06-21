@@ -1,6 +1,16 @@
 <br/>
-<div class = "box col-10 offset-1" >
-  <h1>Edit Course Details</h1>
+<div class = 'col-8 offset-2'>
+
+  <div class = "row">
+    <div class = "col">
+      <h1>Edit Course Details</h1>
+    </div>
+    <div class = "col" style = "text-align: right;">
+      <%= link_to "Cancel",instructor_course_path(@course) , class: "btn btn-danger" %>
+    </div>
+    
+  </div>
+  
 
   <%= simple_form_for @course , url: instructor_course_path(@course), html: {method: 'patch'} do |f| %>
     <%= f.input :title, input_html: { maxlength: 75 }%>

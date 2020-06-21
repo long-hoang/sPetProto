@@ -1,0 +1,25 @@
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
+<br/> 
+<div class = 'col-8 offset-2'>
+
+    
+  <div class = "row">
+    <div class = "col">
+      <h1> Edit section </h1>
+    </div>
+    <div class = "col" style = "text-align: right;">
+      <%= link_to "Cancel", instructor_course_path(@course), class: "btn btn-danger" %>
+    </div>
+    
+  </div>
+
+  <%= simple_form_for @section, url: course_section_path(@course.id, @section.id), html: {method: 'patch'} do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Full' } %>
+    <%= f.submit "Update" %>
+  <% end %>
+
+</div>
+
+<br/>
