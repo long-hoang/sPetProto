@@ -5,26 +5,59 @@
 
 <div class = "col-8 offset-2">
 
+  <p> <%= link_to "Explore", courses_path %> /  <%= @course.title %><p>
+  <hr/>
+
   <% if current_user && current_user == @course.user %>
     <div style = 'text-align: right;'>
       
-      <%= link_to 'Switch to Instructor View', instructor_course_path(@course), class: 'btn btn-outline-primary round'%>
+      <%= link_to 'Instructor Options', instructor_course_path(@course), class: 'btn btn-outline-primary round'%>
 
     </div>
   <% end %>
   
 
-<%= simple_form_for @plan, url: course_plans_path(@course) do |f| %>
-  <%= f.input :date %>
-  <%= f.input :time %>
-
-  <%= f.submit "Add to Planner", class: 'btn btn-primary' %>
-<% end %>
-
-
-
 
   <br/>
+  <!-- Button trigger modal -->
+<div style= "text-align: right;">
+    <button type="button" class="btn btn-success btn-sm round" data-toggle="modal" data-target="#exampleModal">
+      Add to Planner
+    </button>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Schedule this into Planner</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          
+          <%= simple_form_for @plan, url: course_plans_path(@course) do |f| %>
+            <%= f.input :date %>
+            <%= f.input :time %>
+
+            <%= f.submit "Add to Planner", class: 'btn btn-primary' %>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
   <h1> <%= @course.title %>  </h1>
   <p> <%= @course.description %> </p>
@@ -32,7 +65,7 @@
   <div>
     <span class = "text-muted" style = "font-size: 10px;"> By <span class = "font-weight-bold"><%= @course.user.email %></span>, created on <%= @course.created_at.strftime("%B %d, %Y") %></span>
   <div>
-  
+
   <br/>
   <br/>
 
@@ -41,16 +74,26 @@
     <% @course.sections.rank(:row_order).each do |section| %>
       
         <div class="card-header" id="heading<%= section.id %>">
-          <h2 class="mb-0">
+          <h2 class="mb-0" style = "text-align: center;">
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#<%= section.id %>" aria-expanded="false" aria-controls="<%= section.id %>">
             <%= section.title %>           
             </button>
+
+
           </h2>
+  
         </div>
 
         <div id="<%= section.id %>" class="collapse " aria-labelledby="heading<%= section.id %>" data-parent="#accordionExample">
+          <br/>
+          <div style = "text-align: right;">
+            <%= link_to "Detail View", course_section_path(@course.id,section.id), class: "btn btn-outline-primary btn-sm round" %> 
+
+          </div>            
+
           <div class="card-body">
               <%= section.content.html_safe %>
+
               
           </div>
         </div>    

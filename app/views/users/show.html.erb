@@ -34,7 +34,7 @@
           </div>
 
           <div class = 'col-6 plan-box'>
-            <%= plan.course.title %>
+            <%= link_to  plan.course.title , course_path(plan.course)%>
           </div>    
 
           <div class = 'col-2 plan-box' style = "text-align: center;">

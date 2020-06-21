@@ -32,6 +32,12 @@ class Instructor::CoursesController < ApplicationController
     redirect_to instructor_course_path(@course)
   end
 
+  def destroy
+    @course = Course.find(params[:id])
+    @course.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def course_params

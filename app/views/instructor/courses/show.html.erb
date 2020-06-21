@@ -1,5 +1,8 @@
 <script>
   $(function() {
+
+
+
     $('.sections-item').sortable({
       update: function(event,ui) {
        $.ajax({
@@ -30,7 +33,7 @@
       </button>
       <div class="dropdown-menu">
         <%= link_to 'Edit', edit_instructor_course_path(@course) ,class: "dropdown-item"%>
-        <a class="dropdown-item" href="#">Delete Course</a>
+        <%= link_to 'Delete', instructor_course_path(@course) , method: :delete, data: {confirm: 'Delete this entire course?'}, class: "dropdown-item"%>
       </div>
     </div>
 
@@ -60,30 +63,35 @@
 
 
       <div class="card round" data-update-url="<%= instructor_section_path(section) %>" style="background-color: #fff8db" >
-        <div class="card-body" >
+        <div class="card-body" >                          
 
-          <button type="button" class="btn btn-outline-danger btn-sm round">Delete</button>
-          <button type="button" class="btn btn-outline-primary btn-sm round">Edit Section</button>
-          
-          <hr/>
 
-          <h6 class="card-subtitle mb-2 text-muted" style="font-size: 10px;">Last updated on <%= section.updated_at.strftime("%B %d, %Y") %> </h6>
-          <h5 class="card-title"><%= section.title %></h5>
+          <h5 class="card-title" style = "text-align: center;"><%= link_to section.title,  course_section_path(@course.id,section.id) %></h5>
+          <h6 class="card-subtitle mb-2 text-muted" style="font-size: 10px; text-align: center;">Last updated on <%= section.updated_at.strftime("%B %d, %Y") %> </h6>
           
+          <div style = "text-align: center;">
+            <button type="button" class="btn btn-outline-primary btn-sm round">Edit</button>  
+            <%= link_to 'Delete', instructor_course_section_path(@course.id, section.id), method: :delete, data: {confirm: 'Delete Section?'}, class: "btn btn-outline-danger btn-sm round" %>
+            
+          </div>            
 
             <div class="accordion" id="accordionExample">             
                   <div  id="heading<%= section.id %>" style = "text-align: center">
                     <h2 class="mb-0">
                       <button class="btn btn-dark btn-sm round collapsed" type="button" data-toggle="collapse" data-target="#<%= section.id %>" aria-expanded="false" aria-controls="<%= section.id %>">
-                      Show Section Contents          
+                      Preview Section Contents          
                       </button>
                     </h2>
                   </div>
 
                   <div id="<%= section.id %>" class="collapse " aria-labelledby="heading<%= section.id %>" data-parent="#accordionExample">
                     <div class="card-body">
-                        <%= section.content.html_safe %>
-                        
+
+      
+                        <br/>                  
+                        <div class = "section-preview">
+                          <%= section.content.html_safe %>
+                        </div>
                     </div>
                   </div>    
             </div>          

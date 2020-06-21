@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :courses, only: [:index, :show] do
     resources :plans, only: :create
+    resources :sections, only: [:show, :destroy]
   end
 
   resources :users, only: :show do
@@ -18,9 +19,8 @@ Rails.application.routes.draw do
 
   namespace :instructor do
     resources :sections, only: [:update]
-
-    resources :courses, only: [:new, :create, :show, :edit, :update] do
-      resources :sections, only: [:new, :create]
+    resources :courses, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :sections, only: [:new, :create, :destroy]
     end
   end
 end
