@@ -1,6 +1,23 @@
 @import "bootstrap";
 
 
+.navbar {
+  background-color: #fafafa;
+  padding-left:100px;
+  padding-right: 40px;
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+
+}
+
+.vl {
+  
+  border-left: 1px solid #e0e0e0;
+
+  height: 30px;
+}
+
 
 .navbar .navbar-brand{
   font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
@@ -11,6 +28,9 @@
 
 .nav-item {
   bottom-padding:1px;
+  margin:auto;
+  padding-left:2px;
+  padding-right:2px;
 }
 
 
