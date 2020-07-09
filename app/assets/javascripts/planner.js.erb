@@ -1,0 +1,91 @@
+
+
+
+  function getInputDate() {
+    var val = document.getElementById('date-box').value;
+
+
+    console.log(val);
+      var htmlString = "";
+
+      var dateSelected = new Date(JSON.stringify(val));
+
+          var weekday = new Array(7);
+          weekday[0] = "Sunday";
+          weekday[1] = "Monday";
+          weekday[2] = "Tuesday";
+          weekday[3] = "Wednesday";
+          weekday[4] = "Thursday";
+          weekday[5] = "Friday";
+          weekday[6] = "Saturday"; 
+
+      var dayOfWeek = weekday[dateSelected.getDay()]; 
+
+      htmlString += "<h3 style = 'text-align: center;'>"+ dayOfWeek + "</h3 ><br/>";
+      console.log(dayOfWeek);
+
+    $.get("/plans").success(function(data){
+      
+
+      var counter = 0;
+
+      $.each(data, function(index, plan){
+
+        
+        
+        if (plan.date == val){
+         var time = new Date(plan.time);
+         var hour = time.getHours();
+         var minutes = time.getMinutes();
+
+         hour = hour + 8;
+
+
+         if (hour >= 24 ) {
+          hour = hour -24;
+         }
+           
+          var month = new Array();
+          month[0] = "January";
+          month[1] = "February";
+          month[2] = "March";
+          month[3] = "April";
+          month[4] = "May";
+          month[5] = "June";
+          month[6] = "July";
+          month[7] = "August";
+          month[8] = "September";
+          month[9] = "October";
+          month[10] = "November";
+          month[11] = "December";
+
+
+         var date= new Date(JSON.stringify(plan.date)); 
+         var month =  month[date.getMonth()];
+         var dayOfMonth = date.getDate();
+         var year = date.getFullYear();
+
+
+
+          var planElement =  '<div class = "row" ><div class = "col-1 plan-timestamp" ><div style = "font-weight:bold;" >'  
+                +hour+ ':'+minutes+ 
+                '</div><br/>'
+                +month + ' ' + dayOfMonth + '<br/>'+ year+'</div><div class = "col-6 plan-box"><a href="/courses/'+plan.course_id+'">'  +plan.title+  '</a></div><div class = "col-2 plan-box" style = "text-align: center;"><span class="badge badge-pill badge-warning" style = "color: black;">' +plan.category+ '</span></div><div class = "col-2 plan-box " style = "text-align: center;"><div class = "btn btn-primary btn-sm"> Edit</div> <div class = "btn btn-danger btn-sm" style = "font-weight:bold;">X</div></div></div><br/>';
+
+          htmlString += planElement ;
+          counter += 1;
+        }
+        
+      });
+
+        if (counter == 0) {
+          htmlString += "<h6 style = 'text-align: center; color: grey;'> No Plans Scheduled </h6 >";
+        }
+
+      var planner = $('.planner');
+      planner.html(htmlString);
+
+
+    });
+}
+  

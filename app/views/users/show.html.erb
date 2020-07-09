@@ -1,3 +1,13 @@
+
+
+<%= javascript_include_tag "planner" %>
+
+<script>
+   $('.datepicker').datepicker();
+
+
+</script>
+
 <br/>
 <div class ='box col-10 offset-1'>
   <h3> <%= @user.email %> 's Dashboard</h3>
@@ -6,8 +16,6 @@
 
 <div class = 'box col-10 offset-1'>
   <div class = 'row'>
-
-
       <div class = 'box col-4'>
           <%= link_to '+ Create New Course', new_instructor_course_path, class: 'round btn btn-success btn-sm btn-block' %> 
                     
@@ -25,10 +33,6 @@
         <% @user.plans.each do |plan| %>
 
         <div class = "row" >
-
-
-
-
               <div class = 'col-2 plan-timestamp' >
                 
                 <%= plan.time.strftime "%I:%M %p" %>
@@ -39,12 +43,10 @@
 
               </div>
 
-
-
-
               <div class = 'col-6 plan-box'>
                 
                 <% if plan.course.present? %>
+
                   <%= link_to  plan.course.title , course_path(plan.course)%>
                 <% else %>
                   <span style = "color:grey;">Course no longer Exists...</span>
@@ -69,17 +71,51 @@
         </div>
 
 
-
           <br/>
         <% end %>
       </div>
-
   </div>
 </div>
 
 
 
+<!-- TESING -->
 
-<div class = 'box col-10 offset-1'>
+<div class ='box col-10 offset-1'>
+  <h6 style = 'text-align: center; color:grey;'> Select a date to view Plans Scheduled </h6>
+  <br/>
+  <div class = "row justify-content-center">
+    <div class="col col-lg-3"> 
+      <div class="md-form md-outline input-with-post-icon ">
+        <input type="date" id="date-box" class="form-control">
+      </div>
+    </div>
+
+    <div class="col col-lg-2" style = 'text-align: center;'>
+      <button  type="button" class="btn btn-success" onclick="getInputDate()"> Go! </button>
+    </div>
+  </div>  
+
+
+  <br/>
+  <br/>
+  <div class = 'planner' >
+
+  </div>
 
 </div>
+
+
+
+
+
+<br/>
+
+
+
+
+
+
+
+
+

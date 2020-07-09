@@ -33,7 +33,7 @@ gem 'simple_form'
 
 gem 'devise'
 
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 6.0.1'
 
 gem 'ranked-model'
 

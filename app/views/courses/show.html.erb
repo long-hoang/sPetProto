@@ -48,8 +48,11 @@
       <div class="modal-body">
           
           <%= simple_form_for @plan, url: course_plans_path(@course) do |f| %>
+            <%= f.input :title, input_html: {  maxlength: 75 , value: f.object.title || @course.title} %>
+            <%= f.input :category, collection: Course::CATEGORIES %>
             <%= f.input :date %>
             <%= f.input :time %>
+
 
             <%= f.submit "Add to Planner", class: 'btn btn-primary' %>
           <% end %>

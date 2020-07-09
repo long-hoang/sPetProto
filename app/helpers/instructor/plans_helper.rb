@@ -1,0 +1,2 @@
+module Instructor::PlansHelper
+end
