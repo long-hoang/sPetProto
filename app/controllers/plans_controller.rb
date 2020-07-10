@@ -18,6 +18,22 @@ class PlansController < ApplicationController
   end
 
 
+  def edit 
+    @plan = current_plan
+  end
+
+  def update
+    @plan = Plan.find(params[:id])
+    @plan.update_attributes(plan_params)
+    redirect_to user_path(current_user)
+  end
+
+  def destroy 
+    current_plan.destroy
+    redirect_to user_path(current_user)
+  end
+
+
   def index
     render json: current_user.plans.all
   end
@@ -27,6 +43,12 @@ class PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:title, :date,:time, :category)
   end
+
+  def current_plan
+    @current_plan ||= Plan.find(params[:id])
+  end
+
+  helper_method :current_plan
 
 
 end

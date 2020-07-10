@@ -1,0 +1,12 @@
+<br/>
+<div class = 'col-8 offset-2'>
+          <%= simple_form_for @plan, url: plan_path(@plan) do |f| %>
+            <%= f.input :title, input_html: {  maxlength: 75 }  %>
+            <%= f.input :category, collection: Course::CATEGORIES %>
+            <%= f.input :date %>
+            <%= f.input :time %>
+
+
+            <%= f.submit "Update", class: 'btn btn-primary' %>
+          <% end %>
+</div>

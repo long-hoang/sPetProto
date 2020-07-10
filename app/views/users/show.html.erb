@@ -9,79 +9,41 @@
 </script>
 
 <br/>
-<div class ='box col-10 offset-1'>
-  <h3> <%= @user.email %> 's Dashboard</h3>
+<div class ='col-10 offset-1'>
+  <h3> Hello, <%= @user.email %>!</h3>
+  <br/>
 </div>
 
 
-<div class = 'box col-10 offset-1'>
-  <div class = 'row'>
-      <div class = 'box col-4'>
-          <%= link_to '+ Create New Course', new_instructor_course_path, class: 'round btn btn-success btn-sm btn-block' %> 
-                    
-          <h4> My Courses </h4>
 
-          <% @user.courses.each do |course| %>
-            <%= link_to course.title , course_path(course) %>
-            <br/>
-          <% end %>
-      </div>
+<!-- Dynamic Calendar -->
 
+<div class ='col-10 offset-1'>
 
-      <div class ='box col-8' style = "padding: 0px;">
-        <%= link_to '+ Explore Courses', courses_path, class: "round btn btn-info btn-sm " %>
-        <% @user.plans.each do |plan| %>
+  <div class = "row">
+    <div class = "col" style="text-align: left;">
+              <!-- courses modal -->
+            <button type="button" class="btn btn-primary round btn-sm " data-toggle="modal" data-target="#coursesModal">
+              All My Courses
+            </button>     
 
-        <div class = "row" >
-              <div class = 'col-2 plan-timestamp' >
-                
-                <%= plan.time.strftime "%I:%M %p" %>
-                <br/>
-                <%= plan.date.to_formatted_s(:short) %>
-                <br/>
-                <%= plan.date.year %>
+            <!-- plans modal -->
+            <button type="button" class="btn btn-warning round btn-sm " data-toggle="modal" data-target="#planModal">
+              All My Plans
+            </button>       
+    </div>
 
-              </div>
+    <div class = "col" style="text-align: right;">
+            <%= link_to '+ Create New Course', new_instructor_course_path, class: 'round btn btn-success btn-sm ' %> 
+            <%= link_to '+ Explore Courses', courses_path, class: "round btn btn-info btn-sm " %>      
+    </div>
 
-              <div class = 'col-6 plan-box'>
-                
-                <% if plan.course.present? %>
-
-                  <%= link_to  plan.course.title , course_path(plan.course)%>
-                <% else %>
-                  <span style = "color:grey;">Course no longer Exists...</span>
-                <% end %>
-
-              </div>    
-
-              <div class = 'col-2 plan-box' style = "text-align: center;">
-                <% if plan.course.present? %>
-                  <span class="badge badge-pill badge-warning" style = "color: black;"><%= plan.course.category %></span>
-                <% else %>
-                  N/A
-                <% end %>
-              </div>
-
-              <div class = 'col-1 plan-box' style = "text-align: center;">
-                <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                </svg>
-              </div>          
-
-        </div>
-
-
-          <br/>
-        <% end %>
-      </div>
   </div>
-</div>
 
 
 
-<!-- TESING -->
 
-<div class ='box col-10 offset-1'>
+
   <h6 style = 'text-align: center; color:grey;'> Select a date to view Plans Scheduled </h6>
   <br/>
   <div class = "row justify-content-center">
@@ -114,8 +76,105 @@
 
 
 
+<!-- Modal for Plans -->
+<div class="modal fade" id="planModal" tabindex="-1" role="dialog" aria-labelledby="planModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="planModalLongTitle">My Plans</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <% @user.plans.each do |plan| %>
+
+        <div class = "row " >
+              <div class = 'col-1 plan-timestamp' >
+                
+                <div style = "font-weight:bold;"><%= plan.time.strftime "%H:%M" %></div>
+                <br/>
+                <%= plan.date.to_formatted_s(:short) %>
+                <br/>
+                <%= plan.date.year %>
+
+              </div>
+
+            
+              <div class = 'col-5 plan-box'>
+                
+                <% if plan.course.present? %>
+
+                  <%= link_to  plan.title , course_path(plan.course)%>
+                <% else %>
+                  <span style = "color:grey;">Course no longer Exists...</span>
+                <% end %>
+
+              </div>    
+
+              <div class = 'col-2 plan-box' style = "text-align: center;">
+                <% if plan.course.present? %>
+                  <span class="badge badge-pill badge-warning" style = "color: black;"><%= plan.category %></span>
+                <% else %>
+                  N/A
+                <% end %>
+              </div>
+
+              <div class = 'col-3 plan-box' style = "text-align: center;">
+                  <%= link_to 'Edit',  edit_plan_path(plan.id) , class: "btn btn-primary btn-sm" %>
+                  <%= link_to 'Delete', plan_path(plan.id), method: :delete, data: {confirm: 'Delete Plan?'}, class: "btn btn-outline-danger btn-sm" %>
+              </div>    
+                     
+
+        </div>
+
+
+          <br/>
+        <% end %>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 
 
+<!-- Modal for my courses -->
+<div class="modal fade" id="coursesModal" tabindex="-1" role="dialog" aria-labelledby="coursesModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="coursesModalLongTitle">My Courses</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+          <% @user.courses.each do |course| %>
+            <div style = "text-align:center;"><%= link_to course.title , course_path(course) %></div>
+            <br/>
+          <% end %>
+
+          <% if @user.courses.empty? %>
+            <div style = "color: grey; text-align: center;">You have no courses...</div>
+          <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>

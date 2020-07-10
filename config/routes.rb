@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  
   root 'static_pages#index'
-  resources :plans, only: :index
+  resources :plans, only: [:index, :destroy, :edit, :update]
   resources :courses, only: [:index, :show] do
     resources :plans, only: :create
     resources :sections, only: [:show, :destroy, :edit, :update]
