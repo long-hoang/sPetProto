@@ -9,6 +9,7 @@ class PlansController < ApplicationController
 
     if @plan.valid?
       flash[:notice] = 'Successfully added!'
+
       redirect_to course_path(@course)
     else
       redirect_to course_path(@course), alert: "Invalid input, try again!"
@@ -35,7 +36,8 @@ class PlansController < ApplicationController
 
 
   def index
-    render json: current_user.plans.all
+   
+    render json: current_user.plans.all.order(:time)
   end
 
   private

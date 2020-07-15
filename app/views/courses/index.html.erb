@@ -1,8 +1,13 @@
+<%= javascript_include_tag "search" %>
 <br/> 
+      <div class = 'col-8 offset-2'>
+        <input class="form-control round" id="myInput" type="text" placeholder="Search..">
+      </div>
 
-
+          <br/>
+<div id = "course-list">
     <% @courses.each do |course| %>  
-
+    <div id = "course-obj">
       <div class = "offset-md-3" style = "width: 70%;">   
           <div class = "card-body">
             <span class="badge badge-pill badge-danger"><%= course.category %></span>
@@ -21,11 +26,11 @@
           </div>
           <hr style="width:75%;text-align:left;margin-left:0">
       </div>
-
+    </div>
 
 
 
 
     <% end %>
-
+</div>
 

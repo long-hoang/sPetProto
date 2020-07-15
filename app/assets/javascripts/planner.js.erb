@@ -37,11 +37,21 @@
          var hour = time.getHours();
          var minutes = time.getMinutes();
 
+
+         if (minutes < 10) {
+
+          minutes = "0" + String(minutes);
+         }
+
          hour = hour + 8;
 
 
          if (hour >= 24 ) {
           hour = hour -24;
+            if (hour == 0){
+              hour = String(hour);
+              hour += "0";
+            }
          }
            
           var month = new Array();
