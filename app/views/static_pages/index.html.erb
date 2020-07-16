@@ -1,35 +1,50 @@
 
 
+
+
+<div class = "col landing-bg landing-box">
+  <h1>StudentsPET</h1>
+  <h6>A great resource for your educational needs</h6>
+  <h4>Let's get started!</h4>
+  <br/>
+  <%= link_to 'Begin Exploring Courses', courses_path, class: 'btn btn-success btn round' %>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 
 <div class = "container">
-  <div class = "row"> 
-    <div class = "col"> 
-      <h1 class="font-weight-bold"> StudentsPET</h1>
-      <h5> Elevate the classroom experience and find its greatest potential</h5>
-      <br/>
-        <% if user_signed_in? %>
-          <%= link_to '+ Create New Course', new_instructor_course_path, class: 'round btn btn-success btn-lg btn-block' %> 
-          <%= link_to 'EXPLORE Lesson Plans', courses_path, class: "round btn btn-info btn-lg btn-block" %>
-        <% end %>
-        
+<div class = "row">
+    <div class = "col landing-content-box" >
+    <h1>What is StudentsPET?</h1>
+    <br/>
+    <p>StudentsPET is a learning management system which allows users to explore courses, create lessons, share ideas, and organize their learning.<p>
 
-    
-        
+    <% if user_signed_in? == false %>
+        <%= link_to 'Join Us!', new_user_registration_path, class: 'btn btn-info round' %>
+    <% end %>
+    </div>
+
+
+    <div class = "col landing-content-box">
+       <%= image_tag 'spetlanding3.JPG', class: 'img-fluid'  %>
 
     </div>
-    <div class = "col">
-      <%= image_tag  'spetlanding.JPG', class: 'img-fluid', style: 'width:70%' %> 
-
-     </div>
-  </div>
+</div>
 </div>
 
 
     <footer class = "footer">
       <div class = "container " style = "text-align: center;" >
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-          Coming Soon
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+          Version Details
         </button> 
       </div>
     </footer>
@@ -44,17 +59,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Coming Soon!</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Version 0.0.1</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <ul>
-          <li> Search Functions</li>
+          <li> Prototype Version</li>
           <li> Currently Attachments cannot be uploaded for download by others </li>
         </ul>
-        <div style = "font-weight: bold;">Last Major Update on July 9th, 2020 </div>
+        <div style = "font-weight: bold;">Last Major Update: July 15th, 2020 </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

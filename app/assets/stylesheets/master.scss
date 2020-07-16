@@ -119,3 +119,26 @@
   background: white;
   padding: 10px;
 }
+
+.landing-bg {
+  background-image: url("spetlanding2.jpg");
+  background-size:1500px;                      
+  background-repeat:no-repeat;
+
+  height: 320px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.landing-box {
+  padding-top:60px;
+  text-align: center;
+}
+
+.landing-content-box {
+  height: 250px;
+  font-size: 15px;
+
+}
