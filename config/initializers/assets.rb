@@ -12,6 +12,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w[ckeditor/config.js]
 Rails.application.config.assets.precompile += %w( planner.js.erb )
 Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( ckeditor/filebrowser/thumbs/pdf.gif )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
